@@ -20,15 +20,15 @@ def compute_phi(filename,event):
 			n11+=1
 			n1p+=1
 			np1+=1
-		else if(event in jevents and (not status)):
+		elif(event in jevents and (not status)):
 			n10+=1 
 			n1p+=1
 			np0+=1
-		else if((not event in jevents) and status)
+		elif((not event in jevents) and status):
 			n01+=1
 			n0p+=1
 			np1+=1
-		else if((not event in jevents) and (not status))
+		elif((not event in jevents) and (not status)):
 			n00+=1
 			n0p+=1
 			np0+=1
@@ -42,7 +42,7 @@ def compute_correlations(filename):
 		for val in journal[i].values():
 			if val in jevents:
 				continue
-			else
+			else:
 				jevents.append(val)
 	dictcorr={}
 	for eve in jevents:
@@ -61,7 +61,4 @@ def diagnose(filename):
                         return key
 
 
-def main():
-	load_journal("journal.json")
 
-main()
