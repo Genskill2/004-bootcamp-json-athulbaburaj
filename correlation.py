@@ -44,10 +44,10 @@ def compute_correlations(filename):
 				continue
 			else:
 				jevents.append(val)
-	return jevents
 	dictcorr={}
 	for eve in jevents:
-		dictcorr[eve]=compute_phi(filename,eve)
+		corr=compute_phi(filename,eve)
+		dictcorr[eve]=corr
 	return dictcorr
 
 def diagnose(filename):
