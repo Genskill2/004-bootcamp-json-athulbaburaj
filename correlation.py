@@ -56,10 +56,11 @@ def diagnose(filename):
 	min_value=min(cdict.values())
 	for key,value in cdict.items():
 		if max_value==value:
-			return key
+			maxevent= key
 	for key,value in cdict.items():
                 if min_value==value:
-                        return key
+                        minevent=key
+	return maxevent,minevent
 
 
 
