@@ -13,7 +13,7 @@ def load_journal(filename):
 def compute_phi(filename,event):
 	n11=n00=n10=n01=n1p=n0p=np1=np0=0
 	journal=load_journal(filename)
-	for i in range(0,len(journal),1):
+	for i in range(len(journal)):
 		jevents=journal[i].get("events")
 		status=journal[i].get("squirrel")
 		if(event in jevents and status):
@@ -32,18 +32,19 @@ def compute_phi(filename,event):
 			n00+=1
 			n0p+=1
 			np0+=1
-	corr=((n11*n00)-(n10*n01))/math.sqrt(n1p*n0p*np1*np0)
+	corr=((n11*n00)-(n10*n01))/(math.sqrt(n1p*n0p*np1*np0))
 	return corr
 
 def compute_correlations(filename):
 	journal=load_journal(filename)
 	jevents=[]
 	for i in range(0,len(journal),1):
-		for val in journal[i].values():
+		for val in journal[i].get('events'):
 			if val in jevents:
 				continue
 			else:
 				jevents.append(val)
+	return jevents
 	dictcorr={}
 	for eve in jevents:
 		dictcorr[eve]=compute_phi(filename,eve)
